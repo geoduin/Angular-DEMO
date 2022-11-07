@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-demo';
+
+  pi = 3.13;
+
+  GetTitle(){
+    return  "Hello world";
+  }
 }
