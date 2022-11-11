@@ -6,11 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-demo';
+  title: string = 'angular-demo';
 
   pi = 3.13;
 
   GetTitle(){
+    this.title = "Angular real demo"
     return  "Hello world";
   }
 }

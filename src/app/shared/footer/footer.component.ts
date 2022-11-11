@@ -11,5 +11,9 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  footerTitles = "Hello title";
 
+  footerTitle(){
+    return this.footerTitles;
+  }
 }

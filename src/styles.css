@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.bordered{
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid green;
+}
+.a-component, .b-component{
+    padding: 10px;
+    border: 2px solid #ffa500;
+    height: auto;
+}
+.a-component{
+background-color: cornflowerblue;
+}
+
+.b-component{
+background-color: violet;
+}
