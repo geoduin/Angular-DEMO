@@ -1,1 +1,15 @@
-<p>user-edit works!</p>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="OnSumbit()">
+    <div>
+      <label for="name"> Name </label>
+      <input id="name" type="text" formControlName="name" />
+    </div>
+  
+    <div>
+      <label for="age"> Address </label>
+      <input id="age" type="number" formControlName="age" />
+    </div>
+  
+    <button class="button" type="submit">Purchase</button>
+</form>

@@ -9,23 +9,15 @@
         <th scope="col">Handle</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td><a routerLink="1">Mark</a></td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td><a routerLink="2">Jacob</a></td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2"><a routerLink="3">Larry the Bird</a></td>
-        <td>@twitter</td>
-      </tr>
+    <tbody *ngFor="let users of Users;let indexOfelement=index;">
+
+        <tr>
+          <th scope="row">{{indexOfelement}}</th>
+          <td><a routerLink="{{indexOfelement}}">{{users.name}}</a></td>
+          <td>{{users.age}}</td>
+          <td>@mdo</td>
+        </tr>
+      
+
     </tbody>
   </table>

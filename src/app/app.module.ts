@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { ADetailsComponent } from './features/component-a/a-details/a-details.co
 import { UserListComponent } from './features/user/user-list/user-list.component';
 import { UserDetailComponent } from './features/user/user-detail/user-detail.component';
 import { UserEditComponent } from './features/user/user-edit/user-edit.component';
+import { UserCacheDB } from './services/UserService.service';
 
 
 @NgModule({
@@ -33,9 +35,11 @@ import { UserEditComponent } from './features/user/user-edit/user-edit.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserCacheDB],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
