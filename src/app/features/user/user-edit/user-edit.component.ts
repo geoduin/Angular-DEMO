@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class UserEditComponent implements OnInit {
   Users = this.UserDB.GetUsers();
-  
+  ActivatedName = '';
   constructor(private UserDB: UserCacheDB,private formBuilder: FormBuilder,private route: ActivatedRoute) { 
   }
 
@@ -22,6 +22,12 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.UserDB.GetUsers());
+    
+    this.route.queryParams.subscribe(param => {
+      this.ActivatedName = param['name'];
+    })
+    let user = this.UserDB.GetUsers().filter(p => p.name == this.ActivatedName)[0];
+    
   }
 
   OnSumbit(){
