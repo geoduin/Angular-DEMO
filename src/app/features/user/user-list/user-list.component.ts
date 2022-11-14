@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from 'src/app/domain/User';
 import {UserCacheDB } from '../../../services/UserService.service'
 @Component({
@@ -6,7 +6,7 @@ import {UserCacheDB } from '../../../services/UserService.service'
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
   Users: User[] = this.userDB.GetUsers();
   
   constructor(private userDB: UserCacheDB) {
@@ -19,4 +19,7 @@ export class UserListComponent implements OnInit {
     console.log('UserService is loaded');
   }
 
+  ngOnDestroy(): void {
+      console.log("Feyenoord nummer 1");
+  }
 }

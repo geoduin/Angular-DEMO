@@ -17,7 +17,7 @@ const routes: Routes = [
   ]},
   {path: 'UserAdd' , component: UserEditComponent}
   ,
-  {path: 'user/:id', component: UserDetailComponent},
+  {path: 'user/:name', component: UserDetailComponent},
   {path: 'component-a/:userId',pathMatch: "full", component: ADetailsComponent},
   {path: 'a-columns', component: AColumnsComponent, children: [
     {path: ":userId", component: ADetailsComponent}

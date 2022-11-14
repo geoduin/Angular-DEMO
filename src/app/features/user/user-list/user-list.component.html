@@ -9,11 +9,11 @@
         <th scope="col">Handle</th>
       </tr>
     </thead>
-    <tbody *ngFor="let users of Users;let indexOfelement=index;">
+    <tbody>
 
-        <tr>
+        <tr *ngFor="let users of Users;let indexOfelement=index;">
           <th scope="row">{{indexOfelement}}</th>
-          <td><a routerLink="{{indexOfelement}}">{{users.name}}</a></td>
+          <td><a routerLink="{{users.name}}">{{users.name}}</a></td>
           <td>{{users.age}}</td>
           <td>@mdo</td>
         </tr>

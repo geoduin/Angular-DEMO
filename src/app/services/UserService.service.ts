@@ -3,10 +3,12 @@ import { User } from "../domain/User";
 
 @Injectable({providedIn: 'root'})
 export class UserCacheDB{
-    UserList:User[] = [];
+    Url:string = 'mongodb+srv://Admin:Admin@demo.s3ri1o4.mongodb.net/?retryWrites=true&w=majority';
+
+    UserList:User[] = [new User('Jacob', 19), new User('Bob', 51), new User('Jacobs', 19), new User('Boby', 51)];
 
     constructor(){
-        console.log('New card created');
+        console.log('New user service created');
         console.log(this.UserList);
     }
 
@@ -18,7 +20,9 @@ export class UserCacheDB{
     GetUsers(){
         return this.UserList;
     }
-
+    GetUserById(filter: string): User{
+        return this.UserList.filter(user => user.name == filter)[0];
+    }
     ClearList(){
         this.UserList = [];
     }
