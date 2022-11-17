@@ -14,10 +14,13 @@ const routes: Routes = [
   {path: 'component-b', component: BListComponent},
   {path: 'user', component: UserListComponent, children:[
     {path: 'userAdd', component: UserEditComponent},
+    
   ]},
   {path: 'UserAdd' , component: UserEditComponent}
   ,
-  {path: 'user/:name', component: UserDetailComponent},
+  {path: 'user/:name/Edit', pathMatch: "full", component: UserEditComponent},
+  {path: 'user/:name', component: UserDetailComponent, children: [
+    {path: 'Edit',pathMatch: "full", component: UserEditComponent} ]},
   {path: 'component-a/:userId',pathMatch: "full", component: ADetailsComponent},
   {path: 'a-columns', component: AColumnsComponent, children: [
     {path: ":userId", component: ADetailsComponent}

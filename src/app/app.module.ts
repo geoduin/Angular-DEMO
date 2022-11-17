@@ -37,7 +37,7 @@ import { UserCacheDB } from './services/UserService.service';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [UserCacheDB],
   bootstrap: [AppComponent]

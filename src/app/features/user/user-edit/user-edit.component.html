@@ -1,17 +1,38 @@
-<div *ngIf="">
 
-</div>
-
-<form [formGroup]="checkoutForm" (ngSubmit)="OnSumbit()">
+<form 
+#userForm="ngForm"
+name="form"
+(ngSubmit)="OnSubmit2()" 
+novalidate>
     <div>
-      <label for="name"> Name </label>
-      <input id="name" type="text" formControlName="name" />
+      <label for="UserName"> Naam </label>
+      <input 
+      type="text" 
+      name="UserName"
+      [(ngModel)]="Gebruiker!.UserName" 
+      #UserName="ngModel"
+      minlength="3"
+      required
+       />
+    </div>
+    <div>
+      <label for="age"> Leeftijd </label>
+      <input id="age" 
+      type="number"  
+      name="age"
+      [(ngModel)]="Gebruiker!.age"
+      #age="ngModel"
+      required/>
+
+      <!--Validatie div validatie velden-->
+      <div *ngIf="age.invalid">
+        
+      </div>
     </div>
   
-    <div>
-      <label for="age"> Address </label>
-      <input id="age" type="number" formControlName="age" />
-    </div>
-  
-    <button class="button" type="submit">Purchase</button>
+    <button class="button" type="submit" [disabled]="!userForm.valid">Purchase</button>
 </form>
+
+<pre>
+  {{ Gebruiker |json}}
+</pre>

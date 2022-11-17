@@ -21,7 +21,7 @@ export class UserCacheDB{
         return this.UserList;
     }
     GetUserById(filter: string): User{
-        return this.UserList.filter(user => user.name == filter)[0];
+        return this.UserList.filter(user => user.UserName == filter)[0];
     }
     ClearList(){
         this.UserList = [];

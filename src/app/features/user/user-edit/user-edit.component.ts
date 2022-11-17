@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCacheDB } from 'src/app/services/UserService.service';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import {User} from './../../../domain/User';
 
+import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
@@ -10,31 +12,54 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class UserEditComponent implements OnInit {
-  Users = this.UserDB.GetUsers();
-  ActivatedName = '';
-  constructor(private UserDB: UserCacheDB,private formBuilder: FormBuilder,private route: ActivatedRoute) { 
-  }
+  componentExists: boolean = false;
+  //Gebruikt als ngModel voor het formulier.
+  Gebruiker:User | undefined
 
-  checkoutForm = this.formBuilder.group({
-    name: '',
-    age: ''
-  });
+  Users = this.UserDB.GetUsers();
+  ActivatedName: string | undefined | null;
+
+  constructor(
+    private UserDB: UserCacheDB,
+    private route: ActivatedRoute,
+    private router: Router) { 
+  }
 
   ngOnInit(): void {
-    console.log(this.UserDB.GetUsers());
-    
-    this.route.queryParams.subscribe(param => {
-      this.ActivatedName = param['name'];
+    this.route.paramMap.subscribe((param) => {
+      this.ActivatedName = param.get("name");
+      console.log(this.ActivatedName);
+      if(this.ActivatedName){
+        console.log("Wijzigen");
+        //Bestaande user
+          this.Gebruiker = this.UserDB.GetUsers().filter(p => p.UserName == this.ActivatedName)[0];
+          console.log(this.Gebruiker);
+          this.componentExists = true;
+      } else{
+          //New object maken.
+          this.componentExists = false;
+          this.Gebruiker = {
+            UserName: "",
+            age: 0
+          }
+      }
     })
-    let user = this.UserDB.GetUsers().filter(p => p.name == this.ActivatedName)[0];
     
   }
-
-  OnSumbit(){
-    console.log(this.checkoutForm.value);
-    let data = this.checkoutForm.value;
-    let Age = Number.parseInt(data.age!);
-    this.AddUser(data.name!, Age);
+  OnSubmit2(){
+    
+    if(this.componentExists){
+      console.log("Gebruiker is aangepast")
+      //Wijzig gebruiker
+      let Gebruiker2 = this.UserDB.GetUsers().filter(p => p.UserName == this.ActivatedName)[0];
+      Gebruiker2 = this.Gebruiker!;
+      // this.UserDB.UpdateUser(this.Gebruiker);
+    } else{
+      //Creeer nieuwe gebruiker
+      console.log("Gebruiker is aangemaakt")
+      this.UserDB.AddUser(this.Gebruiker!.UserName!, this.Gebruiker!.age!);
+      this.router.navigate([".."]);
+    }
   }
 
   AddUser(name:string, age:number){
