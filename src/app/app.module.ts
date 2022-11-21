@@ -16,7 +16,8 @@ import { UserListComponent } from './features/user/user-list/user-list.component
 import { UserDetailComponent } from './features/user/user-detail/user-detail.component';
 import { UserEditComponent } from './features/user/user-edit/user-edit.component';
 import { UserCacheDB } from './services/UserService.service';
-
+import { UploaderComponent } from './image/uploader/uploader.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UserCacheDB } from './services/UserService.service';
     UserListComponent,
     UserDetailComponent,
     UserEditComponent,
+    UploaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { UserCacheDB } from './services/UserService.service';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [UserCacheDB],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { BListComponent } from './features/component-b/b-list/b-list.component';
 import { UserDetailComponent } from './features/user/user-detail/user-detail.component';
 import { UserEditComponent } from './features/user/user-edit/user-edit.component';
 import { UserListComponent } from './features/user/user-list/user-list.component';
+import { UploaderComponent } from './image/uploader/uploader.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'component-a', pathMatch: "full"},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'a-columns', component: AColumnsComponent, children: [
     {path: ":userId", component: ADetailsComponent}
   ]},
+  {path: "Upload", component: UploaderComponent},
   
   //User lijst zelf toevoegen.
 ];

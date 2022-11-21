@@ -40,14 +40,15 @@ export class UserEditComponent implements OnInit {
           this.componentExists = false;
           this.Gebruiker = {
             UserName: "",
-            age: 0
+            age: 0,
+            Image: undefined
           }
       }
     })
     
   }
   OnSubmit2(){
-    
+    console.log(this.Gebruiker);
     if(this.componentExists){
       console.log("Gebruiker is aangepast")
       //Wijzig gebruiker

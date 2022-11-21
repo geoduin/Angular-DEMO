@@ -29,7 +29,18 @@ novalidate>
         
       </div>
     </div>
-  
+    <div>
+      <label for="Image"> Afbeelding </label>
+      <input id="uu" 
+      type="file"  
+      name="afbeelding"
+      [(ngModel)]="Gebruiker!.Image"
+      #Image="ngModel">
+    </div>
+    <div *ngIf="Gebruiker!.Image">
+      <img src="{{Gebruiker!.Image}}" alt="">
+    </div>
+    
     <button class="button" type="submit" [disabled]="!userForm.valid">Purchase</button>
 </form>
 
